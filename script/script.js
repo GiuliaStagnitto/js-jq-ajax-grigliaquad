@@ -6,11 +6,12 @@ function addClickListener(){
 
 function addRandomNumber(){
 
+  var target = $(this);
+
   $.ajax({
     url:'https://flynn.boolean.careers/exercises/api/random/int',
     method:'GET',
     success: function (data, state){
-
 
       var success = data['success'];
       var value = data['response'];
@@ -18,12 +19,13 @@ function addRandomNumber(){
       console.log(value);
 
       if (value <= 5) {
-        var quadrato = $('.quadrato');
-        quadrato.addClass('giallo');
+        target.addClass('giallo');
+        target.append(value);
       } else {
-        var quadrato = $('.quadrato');
-        quadrato.addClass('verde');
+        target.addClass('verde');
+        target.append(value);
       }
+
     },
     error: function ( request, state, error){
       console.log(request);
